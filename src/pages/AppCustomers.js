@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Customer from "../components/Customer";
 import CustomerService from "../services/CustomerService";
+import { Link } from "react-router-dom";
 
 function AppCustomers() {
   // declare customers variable
@@ -57,8 +58,11 @@ function AppCustomers() {
       {/* customer listing */}
       <ul>
         {customers.map((customer) => (
-          <li key={customer.id} className='text-start'>
-            <Customer {...customer} deleteCallback={handleDelete} />
+          <li className='text-start' key={customer.id}>
+            <div className='d-flex justify-content-start'>
+              <Customer {...customer} deleteCallback={handleDelete} />
+              <Link to={`/customers/${customer.id}`}>Latest Purchases</Link>
+            </div>
           </li>
         ))}
       </ul>

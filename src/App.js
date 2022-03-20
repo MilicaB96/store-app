@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
 import "./App.css";
+import LatestPurchase from "./pages/LatestPurchase";
 
 function App() {
   return (
@@ -18,11 +19,15 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path='/customers'>
+          <Route exact path='/customers'>
             <AppCustomers />
           </Route>
           <Route path='/products'>
             <AppProducts />
+          </Route>
+          <Route path='/customers/:id'>
+            <LatestPurchase />
+            {console.log("hello")}
           </Route>
         </Switch>
       </div>
