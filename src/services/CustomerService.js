@@ -29,5 +29,10 @@ class CustomerService {
     this.customers = this.customers.filter((customer) => customer.id != id);
     return true;
   }
+  create(data) {
+    const newId = this.customers[this.customers.length - 1].id + 1;
+    this.customers.push({ ...data, id: newId, products: [] });
+    return this.customers[this.customers.length - 1];
+  }
 }
 export default new CustomerService();
