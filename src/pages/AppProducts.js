@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Product from "../components/Product";
 import ProductService from "../services/ProductService";
+import { Link } from "react-router-dom";
 
 function AppProducts() {
   // declare prodcut variable
@@ -9,12 +10,12 @@ function AppProducts() {
   // handle increment function
   const handleIncrement = (id) => {
     const newQuantity = ProductService.increment(id);
-    const index = products.findIndex((product) => product.id == id);
+    // const index = products.findIndex((product) => product.id == id);
     setProducts([...products]);
   };
   const handleDecrement = (id) => {
     const newQuantity = ProductService.decrement(id);
-    const index = products.findIndex((product) => product.id == id);
+    // const index = products.findIndex((product) => product.id == id);
     setProducts([...products]);
   };
 
@@ -35,14 +36,19 @@ function AppProducts() {
         onChange={(e) => setFilter(e.target.value)}
       />
       {/* list products */}
-      <ul>
+      <ul className='p-3'>
         {filteredProducts.map((product) => (
-          <li key={product.id}>
-            <Product
-              {...product}
-              incrementCallback={handleIncrement}
-              decrementCallback={handleDecrement}
-            />
+          <li className='container row' key={product.id}>
+            <div className='col-4'>
+              <Product
+                {...product}
+                incrementCallback={handleIncrement}
+                decrementCallback={handleDecrement}
+              />
+            </div>
+            <div className='col'>
+              <Link to={`/products/${product.id}`}>Buy</Link>
+            </div>
           </li>
         ))}
       </ul>

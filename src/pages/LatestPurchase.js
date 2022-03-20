@@ -12,7 +12,7 @@ function LatestPurchase() {
       </h2>
       <ul>
         {customer.products.map((product) => (
-          <li>{product}</li>
+          <li>{product.name}</li>
         ))}
       </ul>
     </div>

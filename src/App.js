@@ -3,7 +3,7 @@ import AppCustomers from "./pages/AppCustomers";
 import AppProducts from "./pages/AppProducts";
 import "./App.css";
 import LatestPurchase from "./pages/LatestPurchase";
-
+import Buy from "./pages/Buy";
 function App() {
   return (
     <Router>
@@ -22,11 +22,14 @@ function App() {
           <Route exact path='/customers'>
             <AppCustomers />
           </Route>
-          <Route path='/products'>
+          <Route exact path='/products'>
             <AppProducts />
           </Route>
           <Route path='/customers/:id'>
             <LatestPurchase />
+          </Route>
+          <Route path='/products/:id'>
+            <Buy />
           </Route>
         </Switch>
       </div>
