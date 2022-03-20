@@ -5,11 +5,24 @@ import ProductService from "../services/ProductService";
 function AppProducts() {
   // declare prodcut variable
   const [products, setProducts] = useState(ProductService.getAll());
+  // filtered products
+  const [filter, setFilter] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(filter.toLowerCase())
+  );
   return (
     <div className='p-3'>
-      {/* list porudcts */}
+      {/* filter list */}
+      <input
+        type='text'
+        placeholder='search products'
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+      />
+      {/* list products */}
       <ul>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <li key={product.id}>
             <Product {...product} />
           </li>
