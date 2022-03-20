@@ -30,7 +30,21 @@ class ProductService {
     return [...this.products];
   }
   get(id) {
-    return this.products[id];
+    return this.products.find((product) => product.id == id);
+  }
+  increment(id) {
+    const index = this.products.findIndex((product) => product.id === id);
+    if (index !== -1) {
+      this.products[index].quantity++;
+    }
+    return this.products[index].quantity;
+  }
+  decrement(id) {
+    const index = this.products.findIndex((product) => product.id === id);
+    if (index !== -1 && this.products[index].quantity > 0) {
+      this.products[index].quantity--;
+    }
+    return this.products[index].quantity;
   }
 }
 export default new ProductService();
