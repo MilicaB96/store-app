@@ -27,7 +27,6 @@ function App() {
           </Route>
           <Route path='/customers/:id'>
             <LatestPurchase />
-            {console.log("hello")}
           </Route>
         </Switch>
       </div>
